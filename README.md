@@ -74,7 +74,7 @@ Quick Tunnel 转发**整个 Koishi HTTP 端口**，包括其他插件路由。�
 
 ## 本地开发
 
-需要 Node.js 20.3+。安装依赖后运行 `npm run build` 生成 `lib/`，再运行 `npm pack` 生成可安装的 `.tgz`。本包只有服务端代码，没有控制台页面或前端构建。
+需要 Node.js 20.3+。安装依赖后运行 `npm test` 构建并检查 HTTP、HTTPS 和 WebSocket 转发；也可单独运行 `npm run build` 生成 `lib/`，再运行 `npm pack` 生成可安装的 `.tgz`。`npm publish` 会先自动构建并执行测试。本包只有服务端代码，没有控制台页面或前端构建。
 
 客户端固定发行元数据和生命周期设计参考 [magpie-intelligence-check](https://github.com/mu-zi-lee/magpie-intelligence-check)，版权声明见 `NOTICE`。本包不内置 cloudflared 二进制。
 

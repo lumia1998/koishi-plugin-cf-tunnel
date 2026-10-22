@@ -39,6 +39,8 @@ export class TrafficProxy {
       this.requests++
       const upstream = (secure ? secureRequest : request)({
         hostname, port,
+        // The public Host header must not select the upstream TLS identity.
+        servername: isIP(hostname) ? '' : hostname,
         method: incoming.method, path: incoming.url || '/',
         headers: forwardHeaders(incoming.headers), agent: false,
       }, response => {
