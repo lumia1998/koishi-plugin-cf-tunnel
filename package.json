@@ -1,0 +1,61 @@
+{
+  "name": "koishi-plugin-cf-tunnel",
+  "version": "0.0.1",
+  "description": "无需公网 IP 或域名，通过 Koishi 指令为 Koishi WebUI 开启 Cloudflare 临时远程访问入口",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.3.0"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "keywords": [
+    "koishi",
+    "plugin",
+    "cloudflare",
+    "cloudflared",
+    "tunnel",
+    "quick-tunnel",
+    "webui",
+    "remote-access"
+  ],
+  "scripts": {
+    "build": "node scripts/build.cjs"
+  },
+  "peerDependencies": {
+    "koishi": "^4.18.11",
+    "@koishijs/plugin-server": "^3.2.9"
+  },
+  "devDependencies": {
+    "@koishijs/plugin-server": "^3.2.9",
+    "@types/node": "^22.7.5",
+    "koishi": "^4.18.11",
+    "typescript": "^5.6.2"
+  },
+  "koishi": {
+    "description": {
+      "zh": "无需公网 IP 或域名，通过指令为 Koishi WebUI 开启 Cloudflare 临时远程访问入口"
+    },
+    "service": {
+      "required": [
+        "server"
+      ],
+      "optional": [
+        "console"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumia1998/koishi-plugin-cf-tunnel.git"
+  },
+  "homepage": "https://github.com/lumia1998/koishi-plugin-cf-tunnel#readme",
+  "bugs": {
+    "url": "https://github.com/lumia1998/koishi-plugin-cf-tunnel/issues"
+  }
+}
