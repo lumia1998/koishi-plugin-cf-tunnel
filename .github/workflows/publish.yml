@@ -15,8 +15,20 @@ jobs:
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci --ignore-scripts
-      - run: npm run build
-      - run: npm publish --access public
+      - name: Publish with registry retries
+        shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          for attempt in 1 2 3 4 5; do
+            echo "npm publish attempt ${attempt}/5"
+            if npm publish --access public --fetch-retries=0 --fetch-timeout=60000; then
+              exit 0
+            fi
+            if npm view koishi-plugin-cf-tunnel@0.0.1 version --fetch-retries=0 --fetch-timeout=10000 >/dev/null 2>&1; then
+              echo "Version 0.0.1 is already visible in the registry."
+              exit 0
+            fi
+            sleep $((attempt * 20))
+          done
+          exit 1
